@@ -183,6 +183,45 @@ public class DoctorDAO implements IDoctorDAO {
         return list;
     }
 
+    @Override
+    public boolean checkLoginDoctor(String email, String password) {
+        boolean isValidDoctor = false;
+        String sql = "select * from doctor where email = ? and password = ?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                isValidDoctor = true;
+            }else{
+                isValidDoctor = false;
+            }
+        }catch (SQLException e){
+            return  false;
+        }
+        return isValidDoctor;
+    }
+
+    @Override
+    public Doctor getDoctorByEmail(String email) {
+        String sql = "select * from doctor where email=?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return new Doctor(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10) );
+            }
+
+        }catch (SQLException e){
+            return null;
+        }
+        return null;
+    }
+
 
     public static void main(String[] args) {
         System.out.println(new DoctorDAO().getDoctorByID(5));

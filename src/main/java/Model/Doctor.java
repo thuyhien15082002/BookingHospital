@@ -43,19 +43,6 @@ public class Doctor {
     this.role = role;
   }
 
-  public Doctor(int specialist_id, String email, String password, String name, String phone, String image, String intro,
-      String gender, int role) {
-    this.specialist_id = specialist_id;
-    this.email = email;
-    this.password = password;
-    this.name = name;
-    this.phone = phone;
-    this.image = image;
-    this.intro = intro;
-    this.gender = gender;
-    this.role = role;
-  }
-
 
 
   public int getId() {

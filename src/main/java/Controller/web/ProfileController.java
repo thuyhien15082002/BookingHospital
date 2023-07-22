@@ -1,6 +1,7 @@
 package Controller.web;
 
 
+import Model.Doctor;
 import Model.User;
 import Service.IUserService;
 
@@ -22,7 +23,7 @@ public class ProfileController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-
+        Doctor doctor = (Doctor) session.getAttribute("doctor");
         RequestDispatcher rd = req.getRequestDispatcher("/views/web/profile.jsp");
         rd.forward(req,resp);
     }
