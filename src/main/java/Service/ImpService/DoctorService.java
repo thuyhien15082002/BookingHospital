@@ -10,44 +10,50 @@ import java.util.List;
 
 public class DoctorService implements IDoctorService {
     @Inject
-    private IDoctorDAO DoctorDAO;
+    private IDoctorDAO doctorDAO;
 
     @Override
     public List<Doctor> AllDoctorlist() {
-
-        return DoctorDAO.AllDoctorlist();
+        return doctorDAO.AllDoctorlist();
     }
 
     @Override
     public void insertDoctor(Doctor Doctor) {
-
-        new DoctorDAO().insertDoctor(Doctor);
+        doctorDAO.insertDoctor(Doctor);
     }
 
     @Override
     public void deleteDoctor(int id) {
-        new DoctorDAO().deleteDoctor(id);
+        doctorDAO.deleteDoctor(id);
     }
 
     @Override
     public void editDoctor(Doctor Doctor) {
-        new DoctorDAO().editDoctor(Doctor);
+        doctorDAO.editDoctor(Doctor);
     }
 
     @Override
     public Doctor getDoctorByID(int id) {
-        return new DoctorDAO().getDoctorByID(id);
+        return doctorDAO.getDoctorByID(id);
     }
 
     @Override
     public List<Doctor> sort() {
-        return DoctorDAO.sort();
+        return doctorDAO.sort();
     }
 
     @Override
     public List<Doctor> searchDoctor(String txtSearch) {
-        return new DoctorDAO().searchDoctor(txtSearch);
+        return doctorDAO.searchDoctor(txtSearch);
     }
 
+    @Override
+    public boolean checkLoginDoctor(String email, String password) {
+        return doctorDAO.checkLoginDoctor(email,password);
+    }
 
+    @Override
+    public Doctor getDoctorByEmail(String email) {
+        return doctorDAO.getDoctorByEmail(email);
+    }
 }

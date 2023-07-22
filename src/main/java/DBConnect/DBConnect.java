@@ -5,7 +5,7 @@ import java.sql.*;
 public class DBConnect {
   private String url = "jdbc:mysql://localhost:3306/hospitalbooking";
   private String user = "root";
-  private String pass = "";
+  private String pass = "280412092312";
   Connection connection;
   private  static DBConnect install;
 
