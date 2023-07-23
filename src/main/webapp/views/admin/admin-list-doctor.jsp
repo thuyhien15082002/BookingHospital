@@ -54,7 +54,7 @@
                         <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
                             data-bs-placement="top" class="avatar avatar-xs pull-up"
                             title="Lilian Fuller">
-                            <img src="${d.image}" alt="Avatar"
+                            <img src="image/${d.image}" alt="Avatar"
                                  class="rounded-circle" />
                         </li>
 

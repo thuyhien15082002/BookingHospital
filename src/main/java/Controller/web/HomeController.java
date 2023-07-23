@@ -30,6 +30,10 @@ public class HomeController extends HttpServlet {
 
             List<Doctor> doctors = doctorService.AllDoctorlist();
             request.setAttribute("doctors", doctors);
+
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }

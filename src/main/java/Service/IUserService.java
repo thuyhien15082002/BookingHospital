@@ -1,5 +1,6 @@
 package Service;
 
+import Model.Register;
 import Model.User;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface IUserService {
 
   User getUserByEmail(String email);
 
-  void createUser(User user);
+  void createUser(String email, String password, String name, int role, String phone);
 
   void updateUSer(User user);
 
@@ -21,5 +22,7 @@ public interface IUserService {
   void deleteUser(int userId);
 
   boolean checkLogin(String email, String password);
+  void sendEmail(Register register );
+  User checkUserExist(String email);
 
 }

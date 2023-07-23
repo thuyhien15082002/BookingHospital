@@ -43,15 +43,15 @@ public class SpecialistDAO implements ISpecialistDAO {
   }
 
   @Override
-  public void insertSpecialist(Specialist Specialist) {
+  public void insertSpecialist(Specialist specialist) {
     String query = "INSERT INTO `Specialist`(`name`,`description`) "
         + "VALUES (?,?)";
 
     try {
       statement = DBConnect.getInstall().get();
       ps = statement.getConnection().prepareStatement(query);
-      ps.setString(1, Specialist.getName());
-      ps.setString(2,Specialist.getDescription());
+      ps.setString(1, specialist.getName());
+      ps.setString(2,specialist.getDescription());
       ps.executeUpdate();
 
     } catch (SQLException e) {
@@ -76,7 +76,7 @@ public class SpecialistDAO implements ISpecialistDAO {
   }
 
   @Override
-  public void editSpecialist(Specialist Specialist) {
+  public void editSpecialist(Specialist specialist) {
     String query = "UPDATE `Specialist` SET "
         + "`name`=?,`description`=?"
         + " WHERE id= ?";
@@ -85,9 +85,9 @@ public class SpecialistDAO implements ISpecialistDAO {
     try {
       statement = DBConnect.getInstall().get();
       ps = statement.getConnection().prepareStatement(query);
-      ps.setString(1, Specialist.getName());
-      ps.setString(2,Specialist.getDescription());
-      ps.setInt(3,Specialist.getId());
+      ps.setString(1, specialist.getName());
+      ps.setString(2,specialist.getDescription());
+      ps.setInt(3,specialist.getId());
       ps.executeUpdate();
 
 

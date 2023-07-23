@@ -2,6 +2,7 @@ package Service.ImpService;
 
 import DAO.IUserDAO;
 import DAO.ImpDAO.UserDAO;
+import Model.Register;
 import Model.User;
 import Service.IUserService;
 import java.util.List;
@@ -31,7 +32,8 @@ public class UserService implements IUserService {
   }
 
   @Override
-  public void createUser(User user) {
+  public void createUser(String email, String password, String name, int role, String phone) {
+    userDAO.createUser(email, password,name, role, phone);
 
   }
 
@@ -53,6 +55,16 @@ public class UserService implements IUserService {
   @Override
   public boolean checkLogin(String email, String password) {
     return userDAO.checkLogin(email,password);
+  }
+
+  @Override
+  public void sendEmail(Register register) {
+    userDAO.sendEmail(register);
+  }
+
+  @Override
+  public User checkUserExist(String email) {
+    return userDAO.checkUserExist(email);
   }
 }
 
