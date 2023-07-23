@@ -56,4 +56,9 @@ public class DoctorService implements IDoctorService {
     public Doctor getDoctorByEmail(String email) {
         return doctorDAO.getDoctorByEmail(email);
     }
+
+    @Override
+    public boolean changePassword(Doctor doctor) {
+        return doctorDAO.changePassword(doctor);
+    }
 }

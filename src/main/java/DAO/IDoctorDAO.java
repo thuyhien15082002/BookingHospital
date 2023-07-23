@@ -15,4 +15,5 @@ public interface IDoctorDAO {
   List<Doctor>searchDoctor(String txtSearch);
   boolean checkLoginDoctor(String email, String password);
   Doctor getDoctorByEmail(String email);
+  boolean changePassword(Doctor doctor);
 }

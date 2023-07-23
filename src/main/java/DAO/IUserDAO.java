@@ -1,5 +1,6 @@
 package DAO;
 
+import Model.Doctor;
 import Model.User;
 import java.util.List;
 
@@ -22,4 +23,5 @@ public interface IUserDAO {
 
   boolean checkLogin(String email, String password);
 
+  boolean changePassword(User user);
 }

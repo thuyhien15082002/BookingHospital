@@ -222,6 +222,22 @@ public class DoctorDAO implements IDoctorDAO {
         return null;
     }
 
+    @Override
+    public boolean changePassword(Doctor doctor) {
+        String sql = "update doctor set password=? where id=?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setString(1, doctor.getPassword());
+            ps.setInt(2, doctor.getId());
+            ps.executeUpdate();
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
     public static void main(String[] args) {
         System.out.println(new DoctorDAO().getDoctorByID(5));

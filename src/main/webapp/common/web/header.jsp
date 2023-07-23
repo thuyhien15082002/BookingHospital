@@ -80,7 +80,7 @@
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
         <c:if test="${empty doctor}">
-            <a href="appointment.html" class="appointment-btn scrollto"><span class="d-none d-md-inline">Đặt</span> lịch</a>
+            <a href="appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Đặt</span> lịch</a>
         </c:if>
 
 
