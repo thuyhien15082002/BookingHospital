@@ -1,4 +1,3 @@
-
 <%@include file="/common/taglib.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -96,38 +95,44 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
-                                                <h2 class="table-avatar">
-                                                    <a href="patient-profile.html"
-                                                       class="avatar avatar-sm me-2"><img
-                                                            class="avatar-img rounded-circle"
-                                                            src="assets/img/patients/patient.jpg"
-                                                            alt="User Image"></a>
-                                                    <a href="patient-profile.html">Richard Wilson
-                                                        <span>#PT0016</span></a>
-                                                </h2>
-                                            </td>
-                                            <td>11 Nov 2023 <span class="d-block text-info">10.00
-                                                                        AM</span></td>
-                                            <td style="min-width: 250px; max-width: 350px; white-space: pre-wrap;">Triệu chứng chung </td>
-                                            <td>0901172380</td>
-                                            <td>Nam</td>
-                                            <td>Đang xử lý / Chấp nhận / Khôn chấp nhận</td>
-                                            <td>
-                                                <div class="table-action">
+                                        <c:forEach var="a" items="${listAppoints}">
+                                            <tr>
+                                                <td>
+                                                    <h2 class="table-avatar">
+                                                        <a href="patient-profile.html">${a.patient_name}
+                                                            <span>Mã tài khoản: #${a.user_id}</span></a>
+                                                    </h2>
+                                                </td>
+                                                <td>${a.appoint_date} <span class="d-block text-info">${a.appoint_time}</span></td>
+                                                <td style="min-width: 250px; max-width: 350px; white-space: pre-wrap;">
+                                                    ${a.appoint_purpose}
+                                                </td>
+                                                <td>${a.phone}</td>
+                                                <td>${a.gender}</td>
+                                                <td>
+                                                    <input type="hidden" value="${a.status}" name="currentStatus" />
+                                                    <select name="newStatus">
+                                                        <c:forEach var="option" items="${['Đang xử lý', 'Chấp nhận','Không chấp nhận']}">
+                                                            <option value="${option}">${option}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <div class="table-action">
 
-                                                    <a href="javascript:void(0);"
-                                                       class="btn btn-sm bg-success-light">
-                                                        <i class="fas fa-edit"></i> Cập nhật
-                                                    </a>
-                                                    <a href="javascript:void(0);"
-                                                       class="btn btn-sm bg-danger-light">
-                                                        <i class="fas fa-times"></i> Xóa
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                        <button
+                                                           class="btn btn-sm bg-success-light">
+                                                            <i class="fas fa-edit"></i> Cập nhật
+                                                        </button>
+<%--                                                        <button--%>
+<%--                                                           class="btn btn-sm bg-danger-light">--%>
+<%--                                                            <i class="fas fa-times"></i> Xóa--%>
+<%--                                                        </button>--%>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+
 
                                         </tbody>
                                     </table>

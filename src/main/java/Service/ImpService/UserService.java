@@ -54,5 +54,10 @@ public class UserService implements IUserService {
   public boolean checkLogin(String email, String password) {
     return userDAO.checkLogin(email,password);
   }
+
+  @Override
+  public boolean changePassword(User user) {
+    return userDAO.changePassword(user);
+  }
 }
 

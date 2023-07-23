@@ -145,6 +145,22 @@ public class UserDAO implements IUserDAO {
     return isValid;
   }
 
+  @Override
+  public boolean changePassword(User user) {
+    String sql = "update user set password=? where id=?";
+    try {
+      statement = DBConnect.getInstall().get();
+      ps = statement.getConnection().prepareStatement(sql);
+      ps.setString(1, user.getPassword());
+      ps.setInt(2, user.getUser_id());
+      ps.executeUpdate();
+      return true;
+    }catch (SQLException e){
+      e.printStackTrace();
+    }
+    return false;
+  }
+
   public static void main(String[] args) {
     User user = new User();
     UserDAO userDAO = new UserDAO();

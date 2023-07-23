@@ -48,7 +48,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="change-password.html">
+                                    <a href="change-password">
                                         <i class="fas fa-lock"></i>
                                         <span>Thay đổi mật khẩu</span>
                                     </a>

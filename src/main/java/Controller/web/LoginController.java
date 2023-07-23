@@ -83,9 +83,9 @@ public class LoginController extends HttpServlet {
 
 
 //        if(isValidDoctor){
-//            RequestDispatcher rd = request.getRequestDispatcher("/views/web/doctor.jsp");
+//            RequestDispatcher rd = request.getRequestDispatcher("/views/doctor/doctor-home.jsp");
 //            rd.forward(request,response);
-//            response.sendRedirect("web-Dhome");
+//            response.sendRedirect("doctor-home");
 //        }else{
 //            session.setAttribute("errorMessage", "Đăng nhập thất bại! <br> Vui lòng kiểm tra lại email và mật khẩu.");
 //            response.sendRedirect("log-in");

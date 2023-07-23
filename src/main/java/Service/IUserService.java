@@ -22,4 +22,6 @@ public interface IUserService {
 
   boolean checkLogin(String email, String password);
 
+  boolean changePassword(User user);
+
 }

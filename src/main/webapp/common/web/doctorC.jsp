@@ -39,7 +39,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="change-password.html">
+                        <a href="doctor-changePassword">
                             <i class="fas fa-lock"></i>
                             <span>Thay đổi mật khẩu</span>
                         </a>
