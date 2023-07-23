@@ -124,10 +124,10 @@
                                                            class="btn btn-sm bg-success-light">
                                                             <i class="fas fa-edit"></i> Cập nhật
                                                         </button>
-                                                        <button
-                                                           class="btn btn-sm bg-danger-light">
-                                                            <i class="fas fa-times"></i> Xóa
-                                                        </button>
+<%--                                                        <button--%>
+<%--                                                           class="btn btn-sm bg-danger-light">--%>
+<%--                                                            <i class="fas fa-times"></i> Xóa--%>
+<%--                                                        </button>--%>
                                                     </div>
                                                 </td>
                                             </tr>
