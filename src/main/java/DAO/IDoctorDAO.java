@@ -1,6 +1,8 @@
 package DAO;
 
 import Model.Doctor;
+
+import javax.print.Doc;
 import java.util.List;
 
 public interface IDoctorDAO {
@@ -11,5 +13,7 @@ public interface IDoctorDAO {
   void editDoctor(Doctor doctor);
   List<Doctor>sort();
   List<Doctor>searchDoctor(String txtSearch);
-
+  boolean checkLoginDoctor(String email, String password);
+  Doctor getDoctorByEmail(String email);
+  boolean changePassword(Doctor doctor);
 }

@@ -1,6 +1,8 @@
 package Service;
 
 import Model.Doctor;
+
+import javax.print.Doc;
 import java.util.List;
 
 public interface IDoctorService {
@@ -11,8 +13,9 @@ public interface IDoctorService {
     Doctor getDoctorByID(int id);
     List<Doctor> sort();
     List<Doctor>searchDoctor(String txtSearch);
-
-
+    boolean checkLoginDoctor(String email, String password);
+    Doctor getDoctorByEmail(String email);
+    boolean changePassword(Doctor doctor);
 
 
 }

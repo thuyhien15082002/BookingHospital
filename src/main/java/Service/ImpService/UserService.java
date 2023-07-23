@@ -58,6 +58,7 @@ public class UserService implements IUserService {
   }
 
   @Override
+
   public void sendEmail(Register register) {
     userDAO.sendEmail(register);
   }
@@ -65,6 +66,10 @@ public class UserService implements IUserService {
   @Override
   public User checkUserExist(String email) {
     return userDAO.checkUserExist(email);
+  }
+  public boolean changePassword(User user) {
+    return userDAO.changePassword(user);
+
   }
 }
 

@@ -1,6 +1,8 @@
 package DAO;
 
+
 import Model.Register;
+
 import Model.User;
 import java.util.List;
 
@@ -26,4 +28,5 @@ public interface IUserDAO {
   void createUser(String email, String password, String name, int role, String phone);
   User checkUserExist(String email);
 
+  boolean changePassword(User user);
 }

@@ -25,4 +25,6 @@ public interface IUserService {
   void sendEmail(Register register );
   User checkUserExist(String email);
 
+  boolean changePassword(User user);
+
 }

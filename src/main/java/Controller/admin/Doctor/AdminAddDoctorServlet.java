@@ -25,9 +25,6 @@ public class AdminAddDoctorServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-
     try {
       List<Doctor> doctors = doctorService.AllDoctorlist();
       request.setAttribute("doctors",doctors);
@@ -58,7 +55,10 @@ public class AdminAddDoctorServlet extends HttpServlet {
     Integer role = Integer.parseInt(request.getParameter("role"));
 
 
-    Doctor doctor = new Doctor(specialist_id,email,password,name,phone,image,intro,gender,role);
+
+
+    Doctor doctor = new Doctor(0,specialist_id,email,password,name,phone,image,intro,gender,role);
+
     doctorService.insertDoctor(doctor);
     request.getRequestDispatcher("views/admin/admin-list-doctor.jsp").forward(request, response);
     response.sendRedirect("admin-list-doctor");
