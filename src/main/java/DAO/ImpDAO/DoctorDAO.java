@@ -20,7 +20,7 @@ public class DoctorDAO implements IDoctorDAO {
     @Override
     public List<Doctor> AllDoctorlist() {
         List<Doctor> list = new ArrayList<>();
-        String query = "SELECT * FROM Doctor";
+        String query = "SELECT * FROM doctor";
         try {
             statement = DBConnect.getInstall().get();
             ps = statement.getConnection().prepareStatement(query);
@@ -40,21 +40,21 @@ public class DoctorDAO implements IDoctorDAO {
     }
 
     @Override
-    public void insertDoctor(Doctor Doctor) {
-        String query = "INSERT INTO `Doctor`(`specialist_id`, `email`, `password`, `name`, `phone`, `image`, `intro`, `gender`, `role`) "
+    public void insertDoctor(Doctor doctor) {
+        String query = "INSERT INTO `doctor`(`specialist_id`, `email`, `password`, `name`, `phone`, `image`, `intro`, `gender`, `role`) "
             + "VALUES (?,?,?,?,?,?,?,?,?)";
         try {
             statement = DBConnect.getInstall().get();
             ps = statement.getConnection().prepareStatement(query);
-            ps.setInt(1, Doctor.getSpecialist_id());
-            ps.setString(2, Doctor.getEmail());
-            ps.setString(3, Doctor.getPassword());
-            ps.setString(4, Doctor.getName());
-            ps.setString(5, Doctor.getPhone());
-            ps.setString(6, Doctor.getImage());
-            ps.setString(7, Doctor.getIntro());
-            ps.setString(8, Doctor.getGender());
-            ps.setInt(9, Doctor.getRole());
+            ps.setInt(1,doctor.getSpecialist_id());
+            ps.setString(2,doctor.getEmail() );
+            ps.setString(3,doctor.getPassword());
+            ps.setString(4,doctor.getName());
+            ps.setString(5,doctor.getPhone());
+            ps.setString(6,doctor.getImage());
+            ps.setString(7, doctor.getIntro());
+            ps.setString(8,doctor.getGender());
+            ps.setInt(9,doctor.getRole());
 
             ps.executeUpdate();
 
@@ -67,7 +67,7 @@ public class DoctorDAO implements IDoctorDAO {
 
     @Override
     public void deleteDoctor(int id) {
-        String query = "delete from Doctor where id =?";
+        String query = "delete from doctor where id =?";
         try {
             statement = DBConnect.getInstall().get();
             ps = statement.getConnection().prepareStatement(query);
@@ -81,7 +81,7 @@ public class DoctorDAO implements IDoctorDAO {
 
     @Override
     public Doctor getDoctorByID(int id) {
-        String query="SELECT * FROM `Doctor` WHERE id=?";
+        String query="SELECT * FROM `doctor` WHERE id=?";
         try {
             statement = DBConnect.getInstall().get();
             ps = statement.getConnection().prepareStatement(query);
@@ -107,8 +107,8 @@ public class DoctorDAO implements IDoctorDAO {
     }
 
     @Override
-    public void editDoctor(Doctor Doctor) {
-        String query = "UPDATE `Doctor` "
+    public void editDoctor(Doctor doctor) {
+        String query = "UPDATE `doctor` "
             + "SET `specialist_id`=?,`email`=?,`password`=?,"
             + "`name`=?,`phone`=?,`image`=?,`intro`=?,`gender`=?,`role`=? "
             + "WHERE id=?";
@@ -117,16 +117,16 @@ public class DoctorDAO implements IDoctorDAO {
         try {
             statement = DBConnect.getInstall().get();
             ps = statement.getConnection().prepareStatement(query);
-            ps.setInt(1,Doctor.getSpecialist_id());
-            ps.setString(2,Doctor.getEmail() );
-            ps.setString(3,Doctor.getPassword());
-            ps.setString(4,Doctor.getName());
-            ps.setString(5,Doctor.getPhone());
-            ps.setString(6,Doctor.getImage());
-            ps.setString(7, Doctor.getIntro());
-            ps.setString(8,Doctor.getGender());
-            ps.setInt(9,Doctor.getRole());
-            ps.setInt(10,Doctor.getId());
+            ps.setInt(1,doctor.getSpecialist_id());
+            ps.setString(2,doctor.getEmail() );
+            ps.setString(3,doctor.getPassword());
+            ps.setString(4,doctor.getName());
+            ps.setString(5,doctor.getPhone());
+            ps.setString(6,doctor.getImage());
+            ps.setString(7, doctor.getIntro());
+            ps.setString(8,doctor.getGender());
+            ps.setInt(9,doctor.getRole());
+            ps.setInt(10,doctor.getId());
             ps.executeUpdate();
 
 
@@ -140,7 +140,7 @@ public class DoctorDAO implements IDoctorDAO {
     @Override
     public List<Doctor> sort() {
         List<Doctor> list = new ArrayList<>();
-        String query = "SELECT * FROM Doctor ORDER BY name";
+        String query = "SELECT * FROM doctor ORDER BY name";
         try {
             statement = DBConnect.getInstall().get();
             ps = statement.getConnection().prepareStatement(query);
@@ -162,7 +162,7 @@ public class DoctorDAO implements IDoctorDAO {
     @Override
     public List<Doctor> searchDoctor(String txtSearch) {
         List<Doctor> list = new ArrayList<>();
-        String query="SELECT * FROM `Doctor` WHERE `name` LIKE ?";
+        String query="SELECT * FROM `doctor` WHERE `name` LIKE ?";
 
         try {
             statement = DBConnect.getInstall().get();
@@ -240,7 +240,7 @@ public class DoctorDAO implements IDoctorDAO {
 
 
     public static void main(String[] args) {
-        System.out.println(new DoctorDAO().getDoctorByID(5));
+        System.out.println(new DoctorDAO().getDoctorByID(3));
     }
 }
 

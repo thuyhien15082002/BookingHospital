@@ -18,9 +18,12 @@ public class DoctorService implements IDoctorService {
     }
 
     @Override
-    public void insertDoctor(Doctor Doctor) {
-        doctorDAO.insertDoctor(Doctor);
+
+    public void insertDoctor(Doctor doctor) {
+
+        new DoctorDAO().insertDoctor(doctor);
     }
+
 
     @Override
     public void deleteDoctor(int id) {
@@ -28,8 +31,9 @@ public class DoctorService implements IDoctorService {
     }
 
     @Override
-    public void editDoctor(Doctor Doctor) {
-        doctorDAO.editDoctor(Doctor);
+
+    public void editDoctor(Doctor doctor) {
+        new DoctorDAO().editDoctor(doctor);
     }
 
     @Override
@@ -44,6 +48,7 @@ public class DoctorService implements IDoctorService {
 
     @Override
     public List<Doctor> searchDoctor(String txtSearch) {
+
         return doctorDAO.searchDoctor(txtSearch);
     }
 

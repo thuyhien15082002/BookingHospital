@@ -1,6 +1,6 @@
 package Model;
 
-import javax.servlet.http.Part;
+
 
 public class Doctor {
   private int id,specialist_id;
@@ -27,21 +27,11 @@ public class Doctor {
     this.role = role;
   }
 
+
   public Doctor() {
   }
 
-  public Doctor(int specialist_id, String email, String password, String name, String phone, String intro,
-      String gender,
-      int role) {
-    this.specialist_id = specialist_id;
-    this.email = email;
-    this.password = password;
-    this.name = name;
-    this.phone = phone;
-    this.intro = intro;
-    this.gender = gender;
-    this.role = role;
-  }
+
 
 
 

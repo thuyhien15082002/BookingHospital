@@ -19,23 +19,23 @@ public class SpecialistService implements ISpecialistService {
   }
 
   @Override
-  public void insertSpecialist(Specialist Specialist ) {
-    new SpecialistDAO().insertSpecialist(Specialist);
+  public void insertSpecialist(Specialist specialist ) {
+     SpecialistDAO.insertSpecialist(specialist);
   }
 
   @Override
   public void deleteSpecialist(int id) {
-    new SpecialistDAO().deleteSpecialist(id);
+     SpecialistDAO.deleteSpecialist(id);
   }
 
   @Override
-  public void editSpecialist(Specialist Specialist) {
-    new SpecialistDAO().editSpecialist(Specialist);
+  public void editSpecialist(Specialist specialist) {
+    SpecialistDAO.editSpecialist(specialist);
   }
 
   @Override
   public Specialist getSpecialistByID(int id) {
-    return  new SpecialistDAO().getSpecialistByID(id);
+    return  SpecialistDAO.getSpecialistByID(id);
 
   }
 
