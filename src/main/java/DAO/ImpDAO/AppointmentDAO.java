@@ -4,10 +4,7 @@ import DAO.IAppointmentDAO;
 import DBConnect.DBConnect;
 import Model.Appointment;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +55,23 @@ public class AppointmentDAO implements IAppointmentDAO {
 
     @Override
     public void createAppointment(Appointment appointment) {
+        String sql = "insert into appointment (user_id, doctor_id, appointment_date, appointment_time, appointment_purpose, patient_name, phone, gender)" +
+                "values(?,?,?,?,?,?,?,?)";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setInt(1, appointment.getUser_id());
+            ps.setInt(2, appointment.getDoctor_id());
+            ps.setDate(3, (Date) appointment.getAppoint_date());
+            ps.setTime(4, appointment.getAppoint_time());
+            ps.setString(5, appointment.getAppoint_purpose());
+            ps.setString(6, appointment.getPatient_name());
+            ps.setString(7,appointment.getPhone());
+            ps.setString(8, appointment.getGender());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
 
     }
 

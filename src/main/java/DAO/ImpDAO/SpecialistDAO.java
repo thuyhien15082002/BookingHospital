@@ -20,7 +20,7 @@ public class SpecialistDAO implements ISpecialistDAO {
 
 
   @Override
-  public List<Specialist> getAll() throws Exception {
+  public List<Specialist> getAll(){
     List<Specialist> list = new ArrayList<>();
     String query = "SELECT * FROM Specialist";
     try{
@@ -28,17 +28,13 @@ public class SpecialistDAO implements ISpecialistDAO {
       ps = statement.getConnection().prepareStatement(query);
       rs = ps.executeQuery();
       while (rs.next()) {
-
         list.add(new Specialist(rs.getInt(1),
             rs.getString(2),
             rs.getString(3)));
-
       }
-
     }catch (SQLException e){
-      throw new RuntimeException();
+      return null;
     }
-
     return list;
   }
 
