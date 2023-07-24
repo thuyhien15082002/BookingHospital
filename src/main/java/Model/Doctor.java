@@ -114,4 +114,20 @@ public class Doctor {
   public void setRole(int role) {
     this.role = role;
   }
+
+  @Override
+  public String toString() {
+    return "Doctor{" +
+            "id=" + id +
+            ", specialist_id=" + specialist_id +
+            ", email='" + email + '\'' +
+            ", password='" + password + '\'' +
+            ", name='" + name + '\'' +
+            ", phone='" + phone + '\'' +
+            ", image='" + image + '\'' +
+            ", intro='" + intro + '\'' +
+            ", gender='" + gender + '\'' +
+            ", role=" + role +
+            '}' + "\n";
+  }
 }
