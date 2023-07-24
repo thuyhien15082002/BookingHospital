@@ -31,6 +31,8 @@ public class Appointment {
         this.gender = gender;
     }
 
+
+
     public int getId() {
         return id;
     }
