@@ -40,6 +40,28 @@ public class DoctorDAO implements IDoctorDAO {
     }
 
     @Override
+    public List<Doctor> getAllDoctorBySpecialistId(int specialistId) {
+        List<Doctor> list = new ArrayList<>();
+        String sql = "select * from doctor where specialist_id=?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setInt(1, specialistId);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Doctor(rs.getInt("id"),
+                        specialistId, rs.getString("email"),
+                        rs.getString("password"), rs.getString("name"),
+                        rs.getString("phone"), rs.getString("image"),
+                        rs.getString("intro"), rs.getString("gender"),rs.getInt("role")));
+            }
+        }catch (SQLException e){
+            return null;
+        }
+        return list;
+    }
+
+    @Override
     public void insertDoctor(Doctor doctor) {
         String query = "INSERT INTO `doctor`(`specialist_id`, `email`, `password`, `name`, `phone`, `image`, `intro`, `gender`, `role`) "
             + "VALUES (?,?,?,?,?,?,?,?,?)";
@@ -241,6 +263,7 @@ public class DoctorDAO implements IDoctorDAO {
 
     public static void main(String[] args) {
         System.out.println(new DoctorDAO().getDoctorByID(3));
+        System.out.println(new DoctorDAO().getAllDoctorBySpecialistId(13));
     }
 }
 

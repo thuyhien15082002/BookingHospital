@@ -66,4 +66,9 @@ public class DoctorService implements IDoctorService {
     public boolean changePassword(Doctor doctor) {
         return doctorDAO.changePassword(doctor);
     }
+
+    @Override
+    public List<Doctor> getAllDoctorBySpecialistId(int specialistId) {
+        return doctorDAO.getAllDoctorBySpecialistId(specialistId);
+    }
 }

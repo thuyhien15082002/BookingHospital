@@ -14,7 +14,7 @@ public class SpecialistService implements ISpecialistService {
   private ISpecialistDAO SpecialistDAO;
 
   @Override
-  public List<Specialist> getAll() throws Exception {
+  public List<Specialist> getAll() {
     return new SpecialistDAO().getAll();
   }
 
