@@ -27,7 +27,7 @@ public class AppointmentService implements IAppointmentService {
 
     @Override
     public void updateAppointment(Appointment appointment) {
-        appointmentDAO.updateAppointment(appointment);
+        appointmentDAO.updateAppointment( appointment);
     }
 
     @Override
