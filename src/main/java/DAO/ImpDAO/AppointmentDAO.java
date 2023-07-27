@@ -122,6 +122,8 @@ public class AppointmentDAO implements IAppointmentDAO {
                 }else{
                     mt=1;
                 }
+            }else{
+                mt=1;
             }
         }
         if(mt==1){

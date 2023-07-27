@@ -164,7 +164,7 @@
                 if (xhr.status === 200) {
                     // Xử lý dữ liệu trả về từ controller nếu cần
                     // console.log(xhr.responseText); // In dữ liệu trả về từ controller vào console
-                    window.location.href = "/views/web/appointment-success.jsp";
+                    window.location.href = "/appointment-success";
                 } else if (xhr.status === 409){
                     // Hiển thị thông báo lỗi cho người dùng
                     alert("Ngày và giờ đã được đặt trước đó. Vui lòng chọn thời gian khác.");
