@@ -22,6 +22,11 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
+    public List<Appointment> getAllAppointsByUserId(int userId) {
+        return appointmentDAO.getAllAppointsByUserId(userId);
+    }
+
+    @Override
     public void createAppointment(Appointment appointment) {
         appointmentDAO.createAppointment(appointment);
     }

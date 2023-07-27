@@ -169,7 +169,6 @@
                     // Hiển thị thông báo lỗi cho người dùng
                     alert("Ngày và giờ đã được đặt trước đó. Vui lòng chọn thời gian khác.");
                     window.location.reload();
-
                 }
             }
         };

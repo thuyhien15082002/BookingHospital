@@ -61,6 +61,7 @@ public class DoctorDAO implements IDoctorDAO {
         return list;
     }
 
+
     @Override
     public void insertDoctor(Doctor doctor) {
         String query = "INSERT INTO `doctor`(`specialist_id`, `email`, `password`, `name`, `phone`, `image`, `intro`, `gender`, `role`) "
