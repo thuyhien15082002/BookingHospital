@@ -26,7 +26,7 @@ public class AppointmentDAO implements IAppointmentDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 listAppoints.add(new Appointment(rs.getInt(1), rs.getInt(2), rs.getInt(3),
-                        rs.getDate(4), rs.getTime(5), rs.getString(6), rs.getInt(7),
+                        rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7),
                         rs.getString(8), rs.getString(9), rs.getString(10)));
             }
             return listAppoints;
@@ -46,7 +46,7 @@ public class AppointmentDAO implements IAppointmentDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 listAppoints.add(new Appointment(rs.getInt(1), rs.getInt(2), doctorId,
-                        rs.getDate(4), rs.getTime(5), rs.getString(6), rs.getInt(7),
+                        rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7),
                         rs.getString(8), rs.getString(9), rs.getString(10)));
             }
             return listAppoints;
@@ -65,7 +65,7 @@ public class AppointmentDAO implements IAppointmentDAO {
             ps.setInt(1, appointment.getUser_id());
             ps.setInt(2, appointment.getDoctor_id());
             ps.setDate(3, (Date) appointment.getAppoint_date());
-            ps.setTime(4, appointment.getAppoint_time());
+            ps.setString(4, appointment.getAppoint_time());
             ps.setString(5, appointment.getAppoint_purpose());
             ps.setString(6, appointment.getPatient_name());
             ps.setString(7,appointment.getPhone());
@@ -113,7 +113,7 @@ public class AppointmentDAO implements IAppointmentDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 list.add(new Appointment(rs.getInt(1), rs.getInt(2), rs.getInt(3),
-                    rs.getDate(4), rs.getTime(5), rs.getString(6), rs.getInt(7),
+                    rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7),
                     rs.getString(8), rs.getString(9), rs.getString(10)));
             }
             return list;

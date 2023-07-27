@@ -52,13 +52,8 @@
                     <div class="validate"></div>
                 </div>
                 <div class="col-md-4 form-group mt-3">
-<<<<<<< HEAD
                     <select name="doctor" id="doctor" class="form-select" >
                         <option value="selectedDoctorId">Chọn bác sĩ</option>
-=======
-                    <select name="doctor" id="doctor" class="form-select">
-                        <option value="" name="selectedDoctorId">Chọn bác sĩ</option>
->>>>>>> e14bc38919ca65f1bc00f13ba5667d92d70f1942
                     </select>
                     <div class="validate"></div>
                 </div>
@@ -92,11 +87,7 @@
     departmentSelect.addEventListener("change", function () {
         const selectedDepartmentId = parseInt(departmentSelect.value);
 
-<<<<<<< HEAD
         doctorSelect.innerHTML = '<option value="selectedDoctorId">Chọn bác sĩ</option>';
-=======
-        doctorSelect.innerHTML = '<option value="" name="selectedDoctorId">Chọn bác sĩ</option>';
->>>>>>> e14bc38919ca65f1bc00f13ba5667d92d70f1942
 
         // Gửi yêu cầu POST với dữ liệu specialistId tới servlet để lấy danh sách bác sĩ
         const xhr = new XMLHttpRequest();
@@ -163,7 +154,5 @@
         xhr.send(formData);
     });
 </script>
-
-
 </body>
 </html>

@@ -65,7 +65,7 @@ public class MakeAppointController extends HttpServlet {
         int selectedDepartmentId = Integer.parseInt(request.getParameter("selectedDepartmentId"));
         int userId = Integer.parseInt(request.getParameter("userId"));
         String purpose = request.getParameter("message");
-        Appointment appointment = new Appointment(0, userId, selectedDoctorId, date, timeTime , purpose, 0, patientName, phone, gender);
+        Appointment appointment = new Appointment(0, userId, selectedDoctorId, date, null , purpose, 0, patientName, phone, gender);
         List<Doctor> doctors = doctorService.getDoctorsByDepartment(selectedDepartmentId);
         request.setAttribute("doctors",doctors);
         appointmentService.createAppointment(appointment);
