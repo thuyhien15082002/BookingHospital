@@ -71,4 +71,9 @@ public class DoctorService implements IDoctorService {
     public List<Doctor> getAllDoctorBySpecialistId(int specialistId) {
         return doctorDAO.getAllDoctorBySpecialistId(specialistId);
     }
+
+    @Override
+    public List<Doctor> getDoctorsByDepartment(int specialist_id) {
+        return doctorDAO.getDoctorsByDepartment(specialist_id);
+    }
 }

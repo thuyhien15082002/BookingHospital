@@ -18,6 +18,7 @@ public interface IDoctorService {
     Doctor getDoctorByEmail(String email);
     boolean changePassword(Doctor doctor);
     List<Doctor> getAllDoctorBySpecialistId(int specialistId);
+    List<Doctor> getDoctorsByDepartment(int specialist_id);
 
 
 }

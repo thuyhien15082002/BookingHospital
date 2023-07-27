@@ -70,11 +70,14 @@
 
                 <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#upcoming-appointments"
-                           data-bs-toggle="tab">Upcoming</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#today-appointments" data-bs-toggle="tab">Today</a>
+                        <form action="doctor-appoint-sort" method="post">
+                            <c:forEach var="a" items="${listAppoints}">
+                                <input type="hidden" name="doctor_id" value="${a.doctor_id}">
+                            </c:forEach>
+                            <input type="date" name="appointment_date" required><br><br>
+
+                            <button type="submit" class="btn btn-success">Sắp xếp</button>
+                        </form>
                     </li>
                 </ul>
 

@@ -1,8 +1,11 @@
 package Controller.web;
 
 import Model.Appointment;
+import Model.Doctor;
 import Service.IAppointmentService;
 
+import Service.IDoctorService;
+import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +23,8 @@ public class MakeAppointController extends HttpServlet {
 
     @Inject
     private IAppointmentService appointmentService;
+    @Inject
+    private IDoctorService doctorService;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -57,9 +62,12 @@ public class MakeAppointController extends HttpServlet {
 
 
         int selectedDoctorId = Integer.parseInt(request.getParameter("selectedDoctorId"));
+        int selectedDepartmentId = Integer.parseInt(request.getParameter("selectedDepartmentId"));
         int userId = Integer.parseInt(request.getParameter("userId"));
         String purpose = request.getParameter("message");
         Appointment appointment = new Appointment(0, userId, selectedDoctorId, date, timeTime , purpose, 0, patientName, phone, gender);
+        List<Doctor> doctors = doctorService.getDoctorsByDepartment(selectedDepartmentId);
+        request.setAttribute("doctors",doctors);
         appointmentService.createAppointment(appointment);
 
 //        RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");

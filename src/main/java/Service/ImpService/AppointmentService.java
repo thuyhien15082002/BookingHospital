@@ -4,6 +4,7 @@ import DAO.IAppointmentDAO;
 import Model.Appointment;
 import Service.IAppointmentService;
 
+import java.util.Date;
 import javax.inject.Inject;
 import java.util.List;
 
@@ -33,5 +34,10 @@ public class AppointmentService implements IAppointmentService {
     @Override
     public void deleteAppointment(int id) {
 
+    }
+
+    @Override
+    public List<Appointment> sortAppointment(Appointment appointment) {
+        return appointmentDAO.sortAppointment( appointment );
     }
 }

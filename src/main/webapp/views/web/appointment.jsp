@@ -19,7 +19,7 @@
                 sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
-        <form action="make-appointment" method="post" >
+        <form action="make-appointment" method="post" id="appointment-form" >
             <div class="row">
                 <div class="col-md-4 form-group">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Họ tên"
@@ -52,8 +52,8 @@
                     <div class="validate"></div>
                 </div>
                 <div class="col-md-4 form-group mt-3">
-                    <select name="doctor" id="doctor" class="form-select">
-                        <option value="">Chọn bác sĩ</option>
+                    <select name="doctor" id="doctor" class="form-select" >
+                        <option value="selectedDoctorId">Chọn bác sĩ</option>
                     </select>
                     <div class="validate"></div>
                 </div>
@@ -69,13 +69,10 @@
                 <textarea class="form-control" name="message" rows="5" placeholder="Triệu chứng (Nếu có)"></textarea>
                 <div class="validate"></div>
             </div>
-<%--            <div class="mb-3">--%>
-<%--                <div class="loading">Loading</div>--%>
-<%--                <div class="error-message"></div>--%>
-<%--                <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>--%>
-<%--            </div>--%>
+
+
+
             <div class="text-center">
-                <input type="hidden" name="userId" value="${user.getUser_id()}">
                 <button type="submit">Đặt lịch</button>
             </div>
         </form>
@@ -88,9 +85,9 @@
     const doctorSelect = document.getElementById("doctor");
 
     departmentSelect.addEventListener("change", function () {
-        const selectedDepartmentId = departmentSelect.value;
+        const selectedDepartmentId = parseInt(departmentSelect.value);
 
-        doctorSelect.innerHTML = '<option value="">Chọn bác sĩ</option>';
+        doctorSelect.innerHTML = '<option value="selectedDoctorId">Chọn bác sĩ</option>';
 
         // Gửi yêu cầu POST với dữ liệu specialistId tới servlet để lấy danh sách bác sĩ
         const xhr = new XMLHttpRequest();
@@ -118,7 +115,7 @@
 <script type="text/javascript">
     // Lắng nghe sự kiện onchange khi người dùng chọn bác sĩ
     doctorSelect.addEventListener("change", function () {
-        const selectedDoctorId = doctorSelect.value;
+        const selectedDoctorId = parseInt(doctorSelect.value);
 
         // Gửi giá trị id của bác sĩ tới controller bằng yêu cầu AJAX
         const xhr = new XMLHttpRequest();

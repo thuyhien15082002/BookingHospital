@@ -3,15 +3,8 @@
     <output-path>$PROJECT_DIR$/target</output-path>
     <properties id="maven-jee-properties">
       <options>
-
         <module>BookingHospital</module>
         <packaging>war</packaging>
-
-        <exploded>false</exploded>
-        <module>BookingHospital</module>
-        <packaging>war</packaging>
-        <unpackNestedArchives>false</unpackNestedArchives>
-
       </options>
     </properties>
     <root id="archive" name="BookingHospital-1.0-SNAPSHOT.war">
