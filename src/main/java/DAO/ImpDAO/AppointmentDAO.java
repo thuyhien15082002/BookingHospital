@@ -6,6 +6,7 @@ import Model.Appointment;
 
 import java.sql.*;
 
+
 import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -124,6 +125,7 @@ public class AppointmentDAO implements IAppointmentDAO {
             return null;
         }
     }
+
 
 
     public boolean isAppointmentExists(Date date, String time, int doctorId){

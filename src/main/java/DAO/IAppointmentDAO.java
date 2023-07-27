@@ -5,6 +5,7 @@ import Model.Appointment;
 
 import java.sql.Date;
 
+
 import java.util.List;
 
 public interface IAppointmentDAO {
@@ -16,7 +17,6 @@ public interface IAppointmentDAO {
     void deleteAppointment(int id);
 
     List<Appointment>sortAppointment(Appointment appointment);
-
     boolean isAppointmentExists(Date date, String time, int doctorId);
 
 }

@@ -72,11 +72,7 @@
                 <textarea class="form-control" name="message" rows="5" id="message" placeholder="Triệu chứng (Nếu có)"></textarea>
                 <div class="validate"></div>
             </div>
-            <%--            <div class="mb-3">--%>
-            <%--                <div class="loading">Loading</div>--%>
-            <%--                <div class="error-message"></div>--%>
-            <%--                <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>--%>
-            <%--            </div>--%>
+
             <div class="text-center">
                 <input type="hidden" name="userId" id="userId" value="${user.getUser_id()}">
                 <button class="btn-primary" type="submit">Đặt lịch</button>
@@ -91,10 +87,12 @@
   const departmentSelect = document.getElementById("department");
   const doctorSelect = document.getElementById("doctor");
 
+
   departmentSelect.addEventListener("change", function () {
     const selectedDepartmentId = departmentSelect.value;
 
     doctorSelect.innerHTML = '<option value="">Chọn bác sĩ</option>';
+
 
     // Gửi yêu cầu POST với dữ liệu specialistId tới servlet để lấy danh sách bác sĩ
     const xhr = new XMLHttpRequest();
@@ -120,8 +118,8 @@
 
 </script>
 <script type="text/javascript">
-  const timeSelect = document.getElementById("time");
 
+    const timeSelect = document.getElementById("time");
   // Tạo danh sách các giờ từ 7 đến 16
   for (let hour = 0o7; hour <= 16; hour++) {
     const option = document.createElement("option");

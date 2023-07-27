@@ -39,7 +39,8 @@ public class AppointmentService implements IAppointmentService {
     @Override
 
     public List<Appointment> sortAppointment(Appointment appointment) {
-        return appointmentDAO.sortAppointment(appointment);
+        return appointmentDAO.sortAppointment( appointment );
+
     }
 
     public boolean isAppointmentExists(Date date, String time, int doctorId) {

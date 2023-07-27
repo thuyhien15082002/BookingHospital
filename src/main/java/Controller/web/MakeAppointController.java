@@ -21,6 +21,7 @@ public class MakeAppointController extends HttpServlet {
 
   @Inject
   private IAppointmentService appointmentService;
+
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -46,7 +47,7 @@ public class MakeAppointController extends HttpServlet {
     // Chuyển chuỗi ngày thành kiểu Date
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     java.sql.Date sqlDate = null;
-    java.util.Date  utilDate = null;
+    java.util.Date utilDate = null;
     try {
       utilDate = dateFormat.parse(dateString);
       sqlDate = new java.sql.Date(utilDate.getTime());
@@ -54,21 +55,16 @@ public class MakeAppointController extends HttpServlet {
       e.printStackTrace();
     }
     boolean isAppointmentExists = appointmentService.isAppointmentExists(sqlDate, time, selectedDoctorId);
-    if(isAppointmentExists){
-      Appointment appointment = new Appointment(0,userId, selectedDoctorId,sqlDate,time,message,0,name,phone, gender );
+    if (isAppointmentExists) {
+      Appointment appointment = new Appointment(0, userId, selectedDoctorId, sqlDate, time, message, 0, name, phone,
+          gender);
       appointmentService.createAppointment(appointment);
       response.setStatus(HttpServletResponse.SC_OK); // 200 OK - Thành công
       response.getWriter().write("Đặt lịch thành công!");
-    }else{
+    } else {
       response.setStatus(HttpServletResponse.SC_CONFLICT); // 409 Conflict - Trùng lặp
       response.getWriter().write("Ngày và giờ đã được người khác đặt trước đó. Vui lòng chọn thời gian khác.");
     }
-
-
-
-
-
-
   }
 
 }

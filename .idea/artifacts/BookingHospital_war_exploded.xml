@@ -6,6 +6,11 @@
         <exploded>true</exploded>
         <module>BookingHospital</module>
         <packaging>war</packaging>
+
+
+        <unpackNestedArchives>false</unpackNestedArchives>
+
+
       </options>
     </properties>
     <root id="root">
@@ -26,6 +31,12 @@
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
           <element id="library" level="project" name="Maven: org.webjars.bower:jquery.ajax:1.2.0" />
           <element id="library" level="project" name="Maven: org.json:json:20230227" />
+=======
+
+          <element id="library" level="project" name="Maven: org.webjars.bower:jquery.ajax:1.2.0" />
+
+          <element id="library" level="project" name="Maven: org.json:json:20230227" />
+
         </element>
       </element>
       <element id="directory" name="META-INF">
