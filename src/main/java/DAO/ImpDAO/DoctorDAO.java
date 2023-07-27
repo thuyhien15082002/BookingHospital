@@ -260,6 +260,31 @@ public class DoctorDAO implements IDoctorDAO {
         return false;
     }
 
+    @Override
+    public List<Doctor> getDoctorsByDepartment(int specialist_id) {
+        List<Doctor> doctors = new ArrayList<>();
+        String query="SELECT id, name FROM doctor WHERE specialist_id = ?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(query);
+            ps.setInt(1,specialist_id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+
+                Doctor doctor = new Doctor(id, 0,null,null,name,null,null,null,null,0);
+                doctors.add(doctor);
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return doctors;
+    }
+
+
+
 
     public static void main(String[] args) {
         System.out.println(new DoctorDAO().getDoctorByID(3));

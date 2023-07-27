@@ -5,6 +5,9 @@ import DBConnect.DBConnect;
 import Model.Appointment;
 
 import java.sql.*;
+
+import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +99,34 @@ public class AppointmentDAO implements IAppointmentDAO {
     }
 
     @Override
+
+    public List<Appointment> sortAppointment(Appointment appointment) {
+
+        List<Appointment> list = new ArrayList<>();
+        String sql ="SELECT *\n"
+            + "FROM appointment\n"
+            + "WHERE appointment_date = ? AND doctor_id = ? \n"
+            + "ORDER BY appointment_time;\n";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            java.sql.Date sqlSelectedDate = new java.sql.Date(appointment.getAppoint_date().getTime());
+            ps.setDate(1,sqlSelectedDate);
+            ps.setInt(2, appointment.getDoctor_id());
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Appointment(rs.getInt(1), rs.getInt(2), rs.getInt(3),
+                    rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7),
+                    rs.getString(8), rs.getString(9), rs.getString(10)));
+            }
+            return list;
+        }catch (SQLException e){
+            return null;
+        }
+    }
+
+
+
     public boolean isAppointmentExists(Date date, String time, int doctorId){
         AppointmentDAO appointmentDAO = new AppointmentDAO();
         List<Appointment> appointments = appointmentDAO.getAllAppointsByDoctorId(doctorId);
@@ -132,4 +163,5 @@ public class AppointmentDAO implements IAppointmentDAO {
             return false;
         }
     }
+
 }
