@@ -1,14 +1,13 @@
 package Model;
 
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Time;
-
 public class Appointment {
     int id;
     int user_id;
     int doctor_id;
     Date appoint_date;
-    Time appoint_time;
+    String appoint_time;
     String appoint_purpose;
     int status;
     String patient_name;
@@ -18,7 +17,7 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(int id, int user_id, int doctor_id, Date appoint_date, Time appoint_time, String appoint_purpose, int status, String patient_name, String phone, String gender) {
+    public Appointment(int id, int user_id, int doctor_id, Date appoint_date, String appoint_time, String appoint_purpose, int status, String patient_name, String phone, String gender) {
         this.id = id;
         this.user_id = user_id;
         this.doctor_id = doctor_id;
@@ -65,11 +64,11 @@ public class Appointment {
         this.appoint_date = appoint_date;
     }
 
-    public Time getAppoint_time() {
+    public String getAppoint_time() {
         return appoint_time;
     }
 
-    public void setAppoint_time(Time appoint_time) {
+    public void setAppoint_time(String appoint_time) {
         this.appoint_time = appoint_time;
     }
 

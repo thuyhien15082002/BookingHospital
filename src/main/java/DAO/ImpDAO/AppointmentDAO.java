@@ -5,6 +5,7 @@ import DBConnect.DBConnect;
 import Model.Appointment;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class AppointmentDAO implements IAppointmentDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 listAppoints.add(new Appointment(rs.getInt(1), rs.getInt(2), rs.getInt(3),
-                        rs.getDate(4), rs.getTime(5), rs.getString(6), rs.getInt(7),
+                        rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7),
                         rs.getString(8), rs.getString(9), rs.getString(10)));
             }
             return listAppoints;
@@ -44,7 +45,7 @@ public class AppointmentDAO implements IAppointmentDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 listAppoints.add(new Appointment(rs.getInt(1), rs.getInt(2), doctorId,
-                        rs.getDate(4), rs.getTime(5), rs.getString(6), rs.getInt(7),
+                        rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7),
                         rs.getString(8), rs.getString(9), rs.getString(10)));
             }
             return listAppoints;
@@ -63,7 +64,7 @@ public class AppointmentDAO implements IAppointmentDAO {
             ps.setInt(1, appointment.getUser_id());
             ps.setInt(2, appointment.getDoctor_id());
             ps.setDate(3, (Date) appointment.getAppoint_date());
-            ps.setTime(4, appointment.getAppoint_time());
+            ps.setString(4, appointment.getAppoint_time());
             ps.setString(5, appointment.getAppoint_purpose());
             ps.setString(6, appointment.getPatient_name());
             ps.setString(7,appointment.getPhone());
@@ -92,5 +93,43 @@ public class AppointmentDAO implements IAppointmentDAO {
     @Override
     public void deleteAppointment(int id) {
 
+    }
+
+    @Override
+    public boolean isAppointmentExists(Date date, String time, int doctorId){
+        AppointmentDAO appointmentDAO = new AppointmentDAO();
+        List<Appointment> appointments = appointmentDAO.getAllAppointsByDoctorId(doctorId);
+
+//        for (Appointment appointment:appointments ) {
+//            if(date.equals(appointment.getAppoint_date())){
+//                System.out.println("-----------" + appointment.getAppoint_time());
+//                String timeMain = time + ":00";
+//                if(timeMain.equals(appointment.getAppoint_time())){
+//                    return false;
+//                }else{
+//                    return true;
+//                }
+//            }
+//        }
+        int mt = 0;
+        for( int i=0; i<appointments.size(); i++){
+            Appointment appointment = appointments.get(i);
+            if(date.equals(appointment.getAppoint_date())){
+                System.out.println("-----------" + appointment.getAppoint_time());
+                String timeMain = time + ":00";
+                if(timeMain.equals(appointment.getAppoint_time())){
+                    mt=0;
+                }else{
+                    mt=1;
+                }
+            }else{
+                mt=1;
+            }
+        }
+        if(mt==1){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

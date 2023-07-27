@@ -5,6 +5,7 @@ import Model.Appointment;
 import Service.IAppointmentService;
 
 import javax.inject.Inject;
+import java.sql.Date;
 import java.util.List;
 
 public class AppointmentService implements IAppointmentService {
@@ -33,5 +34,10 @@ public class AppointmentService implements IAppointmentService {
     @Override
     public void deleteAppointment(int id) {
 
+    }
+
+    @Override
+    public boolean isAppointmentExists(Date date, String time, int doctorId) {
+        return appointmentDAO.isAppointmentExists(date, time, doctorId);
     }
 }

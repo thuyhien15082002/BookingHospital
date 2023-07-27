@@ -6,10 +6,7 @@
         <exploded>true</exploded>
         <module>BookingHospital</module>
         <packaging>war</packaging>
-
-
         <unpackNestedArchives>false</unpackNestedArchives>
-
       </options>
     </properties>
     <root id="root">
@@ -28,6 +25,7 @@
           <element id="library" level="project" name="Maven: commons-io:commons-io:2.13.0" />
           <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.6.2" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: org.json:json:20230227" />
         </element>
       </element>
       <element id="directory" name="META-INF">
