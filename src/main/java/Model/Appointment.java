@@ -1,8 +1,7 @@
 package Model;
 
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Time;
-
 public class Appointment {
     int id;
     int user_id;
@@ -18,9 +17,9 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(int id, int user_id, int doctor_id, Date appoint_date, String appoint_time,
-        String appoint_purpose,
-        int status, String patient_name, String phone, String gender) {
+
+    public Appointment(int id, int user_id, int doctor_id, Date appoint_date, String appoint_time, String appoint_purpose, int status, String patient_name, String phone, String gender) {
+
         this.id = id;
         this.user_id = user_id;
         this.doctor_id = doctor_id;

@@ -5,7 +5,9 @@ import DBConnect.DBConnect;
 import Model.Appointment;
 
 import java.sql.*;
+
 import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,6 +99,7 @@ public class AppointmentDAO implements IAppointmentDAO {
     }
 
     @Override
+
     public List<Appointment> sortAppointment(Appointment appointment) {
 
         List<Appointment> list = new ArrayList<>();
@@ -123,5 +126,42 @@ public class AppointmentDAO implements IAppointmentDAO {
     }
 
 
+
+    public boolean isAppointmentExists(Date date, String time, int doctorId){
+        AppointmentDAO appointmentDAO = new AppointmentDAO();
+        List<Appointment> appointments = appointmentDAO.getAllAppointsByDoctorId(doctorId);
+
+//        for (Appointment appointment:appointments ) {
+//            if(date.equals(appointment.getAppoint_date())){
+//                System.out.println("-----------" + appointment.getAppoint_time());
+//                String timeMain = time + ":00";
+//                if(timeMain.equals(appointment.getAppoint_time())){
+//                    return false;
+//                }else{
+//                    return true;
+//                }
+//            }
+//        }
+        int mt = 0;
+        for( int i=0; i<appointments.size(); i++){
+            Appointment appointment = appointments.get(i);
+            if(date.equals(appointment.getAppoint_date())){
+                System.out.println("-----------" + appointment.getAppoint_time());
+                String timeMain = time + ":00";
+                if(timeMain.equals(appointment.getAppoint_time())){
+                    mt=0;
+                }else{
+                    mt=1;
+                }
+            }else{
+                mt=1;
+            }
+        }
+        if(mt==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }

@@ -6,6 +6,7 @@ import Service.IAppointmentService;
 
 import java.util.Date;
 import javax.inject.Inject;
+import java.sql.Date;
 import java.util.List;
 
 public class AppointmentService implements IAppointmentService {
@@ -37,7 +38,13 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
+
     public List<Appointment> sortAppointment(Appointment appointment) {
         return appointmentDAO.sortAppointment( appointment );
+    }
+
+    public boolean isAppointmentExists(Date date, String time, int doctorId) {
+        return appointmentDAO.isAppointmentExists(date, time, doctorId);
+
     }
 }

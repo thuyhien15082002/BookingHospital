@@ -31,12 +31,6 @@ public class AppointmentController extends HttpServlet {
         try {
             List<Specialist> specialists = specialistService.getAll();
             req.setAttribute("specialists",specialists);
-//            for (Specialist specialist:specialists) {
-//                //lấy danh sách doctor theo specialist_id
-//                List<Doctor> listDoctors = doctorService.getAllDoctorBySpecialistId(specialist.getId());
-//                System.out.println(listDoctors);
-//                req.setAttribute("listDoctors",listDoctors);
-//            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,15 +53,29 @@ public class AppointmentController extends HttpServlet {
         out.print(generateJSON(doctors));
         out.flush();
     }
-    private String generateJSON(List<Doctor> doctors) {
-        StringBuilder json = new StringBuilder("[");
-        for (Doctor doctor : doctors) {
-            json.append("{\"name\": \"").append(doctor.getName()).append("\"},");
-        }
-        if (json.charAt(json.length() - 1) == ',') {
-            json.deleteCharAt(json.length() - 1);
-        }
-        json.append("]");
-        return json.toString();
+//    private String generateJSON(List<Doctor> doctors) {
+//        StringBuilder json = new StringBuilder("[");
+//        for (Doctor doctor : doctors) {
+//            json.append("{\"id\": \"").append(doctor.getId()).append("\"},");
+//            json.append("{\"name\": \"").append(doctor.getName()).append("\"},");
+//        }
+//        if (json.charAt(json.length() - 1) == ',') {
+//            json.deleteCharAt(json.length() - 1);
+//        }
+//        json.append("]");
+//        return json.toString();
+//    }
+private String generateJSON(List<Doctor> doctors) {
+    StringBuilder json = new StringBuilder("[");
+    for (Doctor doctor : doctors) {
+        // Tạo một đối tượng JSON chứa cả trường id và name của bác sĩ
+        json.append("{\"id\": \"").append(doctor.getId()).append("\", ");
+        json.append("\"name\": \"").append(doctor.getName()).append("\"},");
     }
+    if (json.charAt(json.length() - 1) == ',') {
+        json.deleteCharAt(json.length() - 1);
+    }
+    json.append("]");
+    return json.toString();
+}
 }
