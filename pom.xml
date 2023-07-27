@@ -83,13 +83,22 @@
       <version>1.6.2</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.webjars.bower/jquery.ajax -->
+    <dependency>
+      <groupId>org.webjars.bower</groupId>
+      <artifactId>jquery.ajax</artifactId>
+      <version>1.2.0</version>
+    </dependency>
+
+
+
+
     <!-- https://mvnrepository.com/artifact/org.json/json -->
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20230227</version>
     </dependency>
-
 
   </dependencies>
 
