@@ -28,7 +28,7 @@
                         <small class="text-muted float-end"></small>
                     </div>
                     <div class="card-body">
-                        <form action="admin-add-doctor" method="post" enctype="multipart/form-data">
+                        <form action="admin-add-doctor" method="post" >
 
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Họ và Tên</label>
@@ -122,14 +122,14 @@
 
 
                             <div class="row mb-3">
-                                <label for="formFileMultiple" class="col-sm-2 form-label">Ảnh</label>
+                                <label  class="col-sm-2 form-label">Ảnh</label>
 
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
                               <span id="basic-icon-default-phone2" class="input-group-text"
                               ><i class="bx bx-image"></i
                               ></span>
-                                        <input class="form-control" type="file" id="formFileMultiple" multiple name="image" />
+                                        <input class="form-control" type="file" name="image" />
 
                                     </div>
                                     <div class="form-text">Chọn 1 hoặc nhiều ảnh</div>

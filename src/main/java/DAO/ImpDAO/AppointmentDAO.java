@@ -152,20 +152,25 @@ public class AppointmentDAO implements IAppointmentDAO {
         AppointmentDAO appointmentDAO = new AppointmentDAO();
         List<Appointment> appointments = appointmentDAO.getAllAppointsByDoctorId(doctorId);
         int mt = 0;
-        for( int i=0; i<appointments.size(); i++){
-            Appointment appointment = appointments.get(i);
-            if(date.equals(appointment.getAppoint_date())){
-                System.out.println("-----------" + appointment.getAppoint_time());
-                String timeMain = time + ":00";
-                if(timeMain.equals(appointment.getAppoint_time())){
-                    mt=0;
+        if(appointments.size() != 0){
+            for( int i=0; i<appointments.size(); i++){
+                Appointment appointment = appointments.get(i);
+                if(date.equals(appointment.getAppoint_date())){
+                    System.out.println("-----------" + appointment.getAppoint_time());
+                    String timeMain = time + ":00";
+                    if(timeMain.equals(appointment.getAppoint_time())){
+                        mt=0;
+                    }else{
+                        mt=1;
+                    }
                 }else{
                     mt=1;
                 }
-            }else{
-                mt=1;
             }
+        }else{
+            mt = 1;
         }
+
         if(mt==1){
             return true;
         }else{

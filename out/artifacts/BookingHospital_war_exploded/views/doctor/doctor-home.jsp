@@ -1,5 +1,7 @@
 <%@include file="/common/taglib.jsp" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <html>
 <head>
     <title>Title</title>
@@ -68,11 +70,14 @@
 
                 <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#upcoming-appointments"
-                           data-bs-toggle="tab">Upcoming</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#today-appointments" data-bs-toggle="tab">Today</a>
+                        <form action="doctor-appoint-sort" method="post">
+                            <c:forEach var="a" items="${listAppoints}">
+                                <input type="hidden" name="doctor_id" value="${a.doctor_id}">
+                            </c:forEach>
+                            <input type="date" name="appointment_date" required><br><br>
+
+                            <button type="submit" class="btn btn-success">Sắp xếp</button>
+                        </form>
                     </li>
                 </ul>
 
@@ -109,27 +114,22 @@
                                                 </td>
                                                 <td>${a.phone}</td>
                                                 <td>${a.gender}</td>
-                                                <td>
-                                                    <input type="hidden" value="${a.status}" name="currentStatus" />
-                                                    <select name="newStatus">
-                                                        <c:forEach var="option" items="${['Đang xử lý', 'Chấp nhận','Không chấp nhận']}">
-                                                            <option value="${option}">${option}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <div class="table-action">
-
-                                                        <button
-                                                           class="btn btn-sm bg-success-light">
-                                                            <i class="fas fa-edit"></i> Cập nhật
-                                                        </button>
-<%--                                                        <button--%>
-<%--                                                           class="btn btn-sm bg-danger-light">--%>
-<%--                                                            <i class="fas fa-times"></i> Xóa--%>
-<%--                                                        </button>--%>
-                                                    </div>
-                                                </td>
+                                                <form action="change-status" method="post">
+                                                    <input type="hidden" name="id" value="${a.id}">
+                                                    <td>
+                                                        <input type="radio" name="status" value="1" ${a.status eq '1' ? 'checked' : ''} />
+                                                        <label>Chấp nhận</label>
+                                                        <input type="radio" name="status" value="2" ${a.status eq '2' ? 'checked' : ''} />
+                                                        <label>Không chấp nhận</label>
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-action">
+                                                            <button type="submit" class="btn btn-sm bg-success-light">
+                                                                <i class="fas fa-edit"></i> Cập nhật
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </form>
                                             </tr>
                                         </c:forEach>
 
