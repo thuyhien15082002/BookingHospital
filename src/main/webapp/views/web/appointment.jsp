@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-md-4 form-group mt-3">
                     <select name="doctor" id="doctor" class="form-select">
-                        <option value="">Chọn bác sĩ</option>
+                        <option value="" name="selectedDoctorId">Chọn bác sĩ</option>
                     </select>
                     <div class="validate"></div>
                 </div>
@@ -90,7 +90,7 @@
     departmentSelect.addEventListener("change", function () {
         const selectedDepartmentId = departmentSelect.value;
 
-        doctorSelect.innerHTML = '<option value="">Chọn bác sĩ</option>';
+        doctorSelect.innerHTML = '<option value="" name="selectedDoctorId">Chọn bác sĩ</option>';
 
         // Gửi yêu cầu POST với dữ liệu specialistId tới servlet để lấy danh sách bác sĩ
         const xhr = new XMLHttpRequest();
@@ -157,5 +157,7 @@
         xhr.send(formData);
     });
 </script>
+
+
 </body>
 </html>
