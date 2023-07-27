@@ -220,15 +220,19 @@
                 <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                     consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
                     fugiat sit in iste officiis commodi quidem hic quas.</p>
-                <div class="input-group">
-                    <div class="form-outline">
-                        <input type="search" id="form1" class="form-control" placeholder="Nhập bác sĩ" />
-<%--                        <label class="form-label" for="form1">Search</label>--%>
+                <form action="web-search" method="post">
+                    <div class="input-group">
+
+                        <div class="form-outline">
+                            <input type="search" id="form1" class="form-control" placeholder="Nhập bác sĩ" name="txtSearch" />
+                            <%--                        <label class="form-label" for="form1">Search</label>--%>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                    <button type="button" class="btn btn-primary">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
+                </form>
+
             </div>
 
             <div class="row">
