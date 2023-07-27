@@ -1,11 +1,5 @@
-<%@ page import="Model.User" %><%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 7/23/2023
-  Time: 8:16 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@include file="/common/taglib.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="Model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -71,31 +65,49 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-12 col-lg-6">
+                            <div class="col-md-12">
+                                <h4 class="mb-4">Booked Appointment</h4>
+                                <div class="tile">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table datanew">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Mã lịch hẹn</th>
+                                                        <th>Bác sĩ</th>
+                                                        <th>Ngày đặt</th>
+                                                        <th>Tên bệnh nhân</th>
+                                                        <th>Số điện thoại</th>
+                                                        <th>Giới tính</th>
+                                                        <th>Triệu chứng</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <c:forEach var="a" items="${appointmentList}">
+                                                        <tr>
+                                                            <td class="text-bolds">#${a.id}</td>
 
-                                <form action="change-password" method="post">
-                                    <div class="mb-3">
-                                        <label class="mb-2">Mật khẩu cũ</label>
-                                        <input type="password" class="form-control" name="old-password">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="mb-2">Mật khẩu mới</label>
-                                        <input type="password" class="form-control" name="new-password">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="mb-2">Xác nhận mật khẩu</label>
-                                        <input type="password" class="form-control" name="confirm-password">
-                                    </div>
-                                    <div class="submit-section">
-                                        <input type="hidden" value="${user.getUser_id()}" name="id">
-                                        <button type="submit" class="btn btn-primary submit-btn"> Lưu thay đổi </button>
-                                    </div>
-                                    <div class="mb-3" style="color: red;font-size: 20px;">${error1}</div>
-                                    <div class="mb-3" style="color: red;font-size: 20px;">${error2}</div>
-                                    <div class="mb-3" style="color: red;font-size: 20px;">${success}</div>
-                                    <div class="mb-3" style="color: red;font-size: 20px;">${failure}</div>
-                                </form>
+                                                            <c:forEach var="d" items="${doctorList}">
+                                                                <c:if test="${d.id == a.doctor_id}">
+                                                                    <td>${d.name}</td>
+                                                                </c:if>
+                                                            </c:forEach>
+                                                            <td>${a.appoint_date} <br> ${a.appoint_time}</td>
+                                                            <td><span class="badges bg-lightgreen">${a.patient_name}</span></td>
+                                                            <td>${a.phone}</td>
+                                                            <td>${a.gender}</td>
+                                                            <td>${a.appoint_purpose}</td>
+                                                        </tr>
+                                                    </c:forEach>
 
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -105,6 +117,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

@@ -58,6 +58,26 @@ public class AppointmentDAO implements IAppointmentDAO {
     }
 
     @Override
+    public List<Appointment> getAllAppointsByUserId(int userId) {
+        List<Appointment> listAppoints = new ArrayList<>();
+        String sql = " select * from appointment where user_id =? ";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setInt(1, userId);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                listAppoints.add(new Appointment(rs.getInt(1), userId, rs.getInt(3),
+                        rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7),
+                        rs.getString(8), rs.getString(9), rs.getString(10)));
+            }
+            return listAppoints;
+        }catch (SQLException e ){
+            return null;
+        }
+    }
+
+    @Override
     public void createAppointment(Appointment appointment) {
         String sql = "insert into appointment (user_id, doctor_id, appointment_date, appointment_time, appointment_purpose, patient_name, phone, gender)" +
                 "values(?,?,?,?,?,?,?,?)";

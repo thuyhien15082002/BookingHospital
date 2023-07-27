@@ -130,6 +130,51 @@
   }
 </script>
 <script type="text/javascript">
+
+//     const appointmentForm = document.getElementById("appointment-form");
+
+//     appointmentForm.addEventListener("submit", function (event) {
+//         event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+
+//         const selectedDoctorId = doctorSelect.value; // Lấy giá trị id của bác sĩ đã chọn
+//         const name = document.getElementById("name").value; // Lấy giá trị từ trường Họ tên
+//         const gender = document.getElementById("gender").value; // Lấy giá trị từ trường Giới tính
+//         const phone = document.getElementById("phone").value; // Lấy giá trị từ trường Số điện thoại
+//         const date = document.getElementById("date").value; // Lấy giá trị từ trường Ngày hẹn
+//         const time = timeSelect.value; // Lấy giá trị từ trường Giờ hẹn
+//         const message = document.getElementById("message").value; // Lấy giá trị từ trường Triệu chứng
+//         const userId = document.getElementById("userId").value;
+//         // Tạo đối tượng JSON chứa thông tin của form và id bác sĩ đã chọn
+//         const data = {
+//             selectedDoctorId: selectedDoctorId,
+//             name: name,
+//             gender: gender,
+//             phone: phone,
+//             date: date,
+//             time: time,
+//             message: message,
+//             userId : userId
+//         };
+
+//         // Gửi đối tượng JSON đến controller bằng yêu cầu AJAX
+//         const xhr = new XMLHttpRequest();
+//         xhr.onreadystatechange = function() {
+//             if (xhr.readyState === XMLHttpRequest.DONE) {
+//                 if (xhr.status === 200) {
+//                     // Xử lý dữ liệu trả về từ controller nếu cần
+//                     // console.log(xhr.responseText); // In dữ liệu trả về từ controller vào console
+//                     window.location.href = "/appointment-success";
+//                 } else if (xhr.status === 409){
+//                     // Hiển thị thông báo lỗi cho người dùng
+//                     alert("Ngày và giờ đã được đặt trước đó. Vui lòng chọn thời gian khác.");
+//                     window.location.reload();
+//                 }
+//             }
+//         };
+//         xhr.open("POST", "/make-appointment", true); // Thay đổi đường dẫn /make-appointment thành đường dẫn đến controller xử lý yêu cầu
+//         xhr.setRequestHeader("Content-type", "application/json");
+//         xhr.send(JSON.stringify(data));
+//     });
   const appointmentForm = document.getElementById("appointment-form");
 
   appointmentForm.addEventListener("submit", function (event) {
@@ -175,6 +220,7 @@
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(JSON.stringify(data));
   });
+
 </script>
 
 
