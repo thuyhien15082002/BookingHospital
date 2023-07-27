@@ -4,9 +4,8 @@ import DAO.IAppointmentDAO;
 import Model.Appointment;
 import Service.IAppointmentService;
 
-import java.util.Date;
-import javax.inject.Inject;
 import java.sql.Date;
+import javax.inject.Inject;
 import java.util.List;
 
 public class AppointmentService implements IAppointmentService {
@@ -41,6 +40,7 @@ public class AppointmentService implements IAppointmentService {
 
     public List<Appointment> sortAppointment(Appointment appointment) {
         return appointmentDAO.sortAppointment( appointment );
+
     }
 
     public boolean isAppointmentExists(Date date, String time, int doctorId) {

@@ -1,12 +1,10 @@
 package Controller.web;
 
 import Model.Appointment;
-import Model.Doctor;
-import Model.Specialist;
 import Service.IAppointmentService;
 import Service.IDoctorService;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.*;
@@ -31,10 +29,11 @@ public class AppointmentSortController extends HttpServlet {
 
     request.setCharacterEncoding("utf8");
     String selectedDateStr = request.getParameter("appointment_date");
-    Date appointment_date = null;
+    java.sql.Date appointment_date = null;
     try {
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-      appointment_date = sdf.parse(selectedDateStr);
+      java.util.Date utilDate = sdf.parse(selectedDateStr);
+      appointment_date = new java.sql.Date(utilDate.getTime());
 
     } catch (Exception e) {
       throw new RuntimeException(e);

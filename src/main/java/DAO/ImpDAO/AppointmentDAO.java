@@ -6,9 +6,9 @@ import Model.Appointment;
 
 import java.sql.*;
 
-import java.text.ParseException;
 
 import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,6 +114,7 @@ public class AppointmentDAO implements IAppointmentDAO {
             ps.setDate(1,sqlSelectedDate);
             ps.setInt(2, appointment.getDoctor_id());
             rs = ps.executeQuery();
+
             while(rs.next()){
                 list.add(new Appointment(rs.getInt(1), rs.getInt(2), rs.getInt(3),
                     rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7),
@@ -130,18 +131,6 @@ public class AppointmentDAO implements IAppointmentDAO {
     public boolean isAppointmentExists(Date date, String time, int doctorId){
         AppointmentDAO appointmentDAO = new AppointmentDAO();
         List<Appointment> appointments = appointmentDAO.getAllAppointsByDoctorId(doctorId);
-
-//        for (Appointment appointment:appointments ) {
-//            if(date.equals(appointment.getAppoint_date())){
-//                System.out.println("-----------" + appointment.getAppoint_time());
-//                String timeMain = time + ":00";
-//                if(timeMain.equals(appointment.getAppoint_time())){
-//                    return false;
-//                }else{
-//                    return true;
-//                }
-//            }
-//        }
         int mt = 0;
         for( int i=0; i<appointments.size(); i++){
             Appointment appointment = appointments.get(i);
@@ -163,5 +152,4 @@ public class AppointmentDAO implements IAppointmentDAO {
             return false;
         }
     }
-
 }

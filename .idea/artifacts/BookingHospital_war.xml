@@ -7,6 +7,9 @@
         <module>BookingHospital</module>
         <packaging>war</packaging>
 
+        <module>BookingHospital</module>
+        <packaging>war</packaging>
+
         <exploded>false</exploded>
         <module>BookingHospital</module>
         <packaging>war</packaging>
